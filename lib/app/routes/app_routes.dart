@@ -7,6 +7,9 @@ abstract class Routes {
   static const SPLASH = _Paths.SPLASH;
   static const LOGIN = _Paths.LOGIN;
   static const OTP = _Paths.OTP;
+  static const INTERNET_PACKAGE = _Paths.INTERNET_PACKAGE;
+  static const PAYMENT_METHOD = _Paths.PAYMENT_METHOD;
+  static const PAYMENT_SUCCESS = _Paths.PAYMENT_SUCCESS;
 }
 
 abstract class _Paths {
@@ -15,4 +18,7 @@ abstract class _Paths {
   static const SPLASH = '/splash';
   static const LOGIN = '/login';
   static const OTP = '/otp';
+  static const INTERNET_PACKAGE = '/internet-package';
+  static const PAYMENT_METHOD = '/payment-method';
+  static const PAYMENT_SUCCESS = '/payment-success';
 }

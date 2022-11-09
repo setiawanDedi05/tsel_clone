@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             title: "Application",
-            initialRoute: Routes.OTP,
+            initialRoute: Routes.PAYMENT_SUCCESS,
             getPages: AppPages.routes,
           );
     return FutureBuilder(

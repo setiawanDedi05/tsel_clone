@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_tsel/app/routes/app_pages.dart';
+import 'package:my_tsel/app/widget/news_telkomsel.dart';
 import 'package:my_tsel/mockup/covid_content.dart';
 import 'package:my_tsel/mockup/feature_content.dart';
 import 'package:my_tsel/mockup/link_aja_content.dart';
@@ -87,7 +89,7 @@ class HomeView extends GetView<HomeController> {
           showUnselectedLabels: true,
           elevation: 0,
           selectedLabelStyle:
-              redTextStyle.copyWith(fontSize: 10, fontWeight: medium),
+              redTextStyle.copyWith(fontSize: 10, fontWeight: bold),
           unselectedLabelStyle:
               blackTextStyle.copyWith(fontSize: 10, fontWeight: medium),
           items: menu_bottom_bar,
@@ -516,23 +518,7 @@ class HomeView extends GetView<HomeController> {
               ),
             ],
           ),
-          Container(
-            width: Get.width,
-            margin: EdgeInsets.symmetric(vertical: 20),
-            height: 100,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: 2,
-              itemBuilder: (BuildContext context, int index) {
-                return Image.asset("assets/images/img_news_${index + 1}.png");
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(
-                  width: 10,
-                );
-              },
-            ),
-          )
+          NewsTelkomsel()
         ],
       ),
     );
@@ -559,6 +545,7 @@ class HomeView extends GetView<HomeController> {
               CategoryPackageItem(
                 title: 'Internet',
                 iconUrl: 'assets/images/ic_internet.png',
+                onTap: () => Get.offAllNamed(Routes.INTERNET_PACKAGE),
               ),
               CategoryPackageItem(
                 title: 'Telpon',
@@ -599,33 +586,38 @@ class HomeView extends GetView<HomeController> {
 class CategoryPackageItem extends StatelessWidget {
   final String title;
   final String iconUrl;
+  final VoidCallback? onTap;
   const CategoryPackageItem({
     required this.title,
+    this.onTap,
     required this.iconUrl,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(10),
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle, color: yellow.withOpacity(0.1)),
-            child: Image.asset(
-              iconUrl,
-              width: 31,
-              height: 21,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle, color: yellow.withOpacity(0.1)),
+              child: Image.asset(
+                iconUrl,
+                width: 31,
+                height: 21,
+              ),
             ),
-          ),
-          Text(
-            title,
-            style: blackTextStyle.copyWith(fontWeight: normal, fontSize: 14),
-          )
-        ],
+            Text(
+              title,
+              style: blackTextStyle.copyWith(fontWeight: normal, fontSize: 14),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -635,8 +627,10 @@ class itemCurrentData extends StatelessWidget {
   final String title;
   final String content;
   final String unit;
+  final VoidCallback? onTap;
   const itemCurrentData({
     required this.title,
+    this.onTap,
     required this.content,
     required this.unit,
     Key? key,
@@ -644,39 +638,42 @@ class itemCurrentData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 80,
-      width: 120,
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-      decoration: BoxDecoration(
-        color: white,
-        boxShadow: [
-          BoxShadow(
-            color: gray,
-            spreadRadius: 5,
-            blurRadius: 2,
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title),
-          RichText(
-            text: TextSpan(
-                text: content,
-                style: redTextStyle.copyWith(fontWeight: bold, fontSize: 24),
-                children: [
-                  TextSpan(
-                    text: unit,
-                    style: grayDarkTextStyle.copyWith(
-                      fontWeight: normal,
-                      fontSize: 14,
+    return GestureDetector(
+      onTap: onTap, 
+      child: Container(
+        height: 80,
+        width: 120,
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+        decoration: BoxDecoration(
+          color: white,
+          boxShadow: [
+            BoxShadow(
+              color: gray,
+              spreadRadius: 5,
+              blurRadius: 2,
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(title),
+            RichText(
+              text: TextSpan(
+                  text: content,
+                  style: redTextStyle.copyWith(fontWeight: bold, fontSize: 24),
+                  children: [
+                    TextSpan(
+                      text: unit,
+                      style: grayDarkTextStyle.copyWith(
+                        fontWeight: normal,
+                        fontSize: 14,
+                      ),
                     ),
-                  ),
-                ]),
-          ),
-        ],
+                  ]),
+            ),
+          ],
+        ),
       ),
     );
   }
