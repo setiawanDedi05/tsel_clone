@@ -1,5 +1,9 @@
 import 'package:get/get.dart';
 
+import '../modules/InternetSOS/bindings/internet_s_o_s_binding.dart';
+import '../modules/InternetSOS/views/internet_s_o_s_view.dart';
+import '../modules/NoInternetAccess/bindings/no_internet_access_binding.dart';
+import '../modules/NoInternetAccess/views/no_internet_access_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/internetPackage/bindings/internet_package_binding.dart';
@@ -50,6 +54,16 @@ class AppPages {
       name: _Paths.PAYMENT_SUCCESS,
       page: () => const PaymentSuccessView(),
       binding: PaymentSuccessBinding(),
+    ),
+    GetPage(
+      name: _Paths.NO_INTERNET_ACCESS,
+      page: () => const NoInternetAccessView(),
+      binding: NoInternetAccessBinding(),
+    ),
+    GetPage(
+      name: _Paths.INTERNET_S_O_S,
+      page: () => const InternetSOSView(),
+      binding: InternetSOSBinding(),
     ),
   ];
 }

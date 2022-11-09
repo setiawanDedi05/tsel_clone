@@ -10,6 +10,8 @@ abstract class Routes {
   static const INTERNET_PACKAGE = _Paths.INTERNET_PACKAGE;
   static const PAYMENT_METHOD = _Paths.PAYMENT_METHOD;
   static const PAYMENT_SUCCESS = _Paths.PAYMENT_SUCCESS;
+  static const NO_INTERNET_ACCESS = _Paths.NO_INTERNET_ACCESS;
+  static const INTERNET_S_O_S = _Paths.INTERNET_S_O_S;
 }
 
 abstract class _Paths {
@@ -21,4 +23,6 @@ abstract class _Paths {
   static const INTERNET_PACKAGE = '/internet-package';
   static const PAYMENT_METHOD = '/payment-method';
   static const PAYMENT_SUCCESS = '/payment-success';
+  static const NO_INTERNET_ACCESS = '/no-internet-access';
+  static const INTERNET_S_O_S = '/internet-s-o-s';
 }
